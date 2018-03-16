@@ -1,3 +1,14 @@
+# This Fork
+This is a fork of [TogglPy](https://github.com/matthewdowney/TogglPy) that includes a `toggl_report.py` script to generate csv reports with the content of your Toggl workspace. It works with the Toggl API as of March 15 2018.
+
+The useage is:
+```
+python toggl_report.py api_key.txt config.ini
+```
+where the number in `api_key.txt` must be replaced with your real Toggl API key *without* whitespace. Time range, time zone, and IO settings can be adjusted in `config.ini`.
+
+This code has been tested in Python 2 and 3 but future and configparser must be installed for use in Python 2.
+
 # TogglPy
 TogglPy is a python library for interacting with the [Toggl API](https://github.com/toggl/toggl_api_docs).
 
