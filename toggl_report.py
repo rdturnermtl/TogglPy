@@ -4,7 +4,7 @@ Example usage:
 python toggl_report.py api_key.txt config.ini
 '''
 from __future__ import print_function
-import ConfigParser
+import configparser
 from os.path import join
 from sys import argv
 import numpy as np
@@ -34,10 +34,10 @@ print('reading in settings')
 api_key_file = argv[1]
 settings_ini_file = argv[2] if len(argv) > 2 else 'config.ini'
 
-with open(api_key_file, 'rb') as f:
+with open(api_key_file, 'r') as f:
     api_key = f.read()
 
-config = ConfigParser.RawConfigParser()
+config = configparser.ConfigParser()
 config.read(settings_ini_file)
 start_date = config.get('Time', 'StartDate')
 end_date = config.get('Time', 'EndDate')

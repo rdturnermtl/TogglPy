@@ -2,6 +2,7 @@
 # TogglPy is a non-cluttered, easily understood and implemented
 # library for interacting with the Toggl API.
 #--------------------------------------------------------------
+from __future__ import print_function
 from datetime import datetime
 # for making requests
 # backward compatibility with python2
@@ -26,8 +27,8 @@ import json
 
 
 def urlopen_(req, cafile=None):
-    print 'opening:'
-    print req.get_full_url()
+    print('opening:')
+    print(req.get_full_url())
     return urlopen(req, cafile=cafile)
 
 
