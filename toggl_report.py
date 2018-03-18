@@ -14,6 +14,10 @@ from TogglPy import Toggl
 time_entry_url = 'https://www.toggl.com/api/v8/time_entries'
 pid_req_fmt = 'https://www.toggl.com/api/v8/projects/%d'
 
+'''
+If one wanted to be more strongly typed and force types when constructing the
+pandas dataframes one would use a type setup like this:
+
 time_types = str
 pid_type = object  # so some int and some NaN, if no nan then np.int64
 col_dtypes = {'duronly': bool,
@@ -28,6 +32,7 @@ col_dtypes = {'duronly': bool,
               'guid': str,
               'id': np.int64,
               'uid': np.int64}
+'''
 
 # Load in API key and settings
 print('reading in settings')
@@ -53,7 +58,7 @@ params = {'start_date': start_date, 'end_date': end_date}
 print('Making request')  # Get the raw data on time entries
 response = toggl.request(time_entry_url, parameters=params)
 print('%d records' % len(response))
-df = pd.DataFrame(response)  # TODO pass in dtypes
+df = pd.DataFrame(response)
 
 # Get a list of project ids
 pids = df['pid'].unique()
@@ -64,6 +69,7 @@ print('Making project request')
 response = [toggl.request(pid_req_fmt % pp)['data'] for pp in pids]
 print('%d records' % len(response))
 pid_df = pd.DataFrame(response)
+# Note: id in this data struct is the same as pid in df!
 pid_df.set_index('id', drop=True, inplace=True)
 df['proj_name'] = df['pid'].map(pid_df['name'])
 

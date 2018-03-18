@@ -9,6 +9,12 @@ where the number in `api_key.txt` must be replaced with your real Toggl API key 
 
 This code has been tested in Python 2 and 3 but future and configparser must be installed for use in Python 2.
 
+The python 3 test setup was
+```
+python==3.6.4 numpy==1.13.1 pandas==0.20.3
+```
+There are no other direct requirements.
+
 # TogglPy
 TogglPy is a python library for interacting with the [Toggl API](https://github.com/toggl/toggl_api_docs).
 
